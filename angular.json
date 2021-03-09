@@ -1,7 +1,328 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "apps",
   "projects": {
-  }
+    "shoe-store-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/shoe-store-web",
+      "sourceRoot": "apps/shoe-store-web/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/shoe-store-web",
+            "index": "apps/shoe-store-web/src/index.html",
+            "main": "apps/shoe-store-web/src/main.ts",
+            "polyfills": "apps/shoe-store-web/src/polyfills.ts",
+            "tsConfig": "apps/shoe-store-web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/shoe-store-web/src/favicon.ico",
+              "apps/shoe-store-web/src/assets"
+            ],
+            "styles": [
+              "apps/shoe-store-web/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/shoe-store-web/src/environments/environment.ts",
+                  "with": "apps/shoe-store-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "shoe-store-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shoe-store-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shoe-store-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/shoe-store-web/src/test.ts",
+            "polyfills": "apps/shoe-store-web/src/polyfills.ts",
+            "tsConfig": "apps/shoe-store-web/tsconfig.spec.json",
+            "karmaConfig": "apps/shoe-store-web/karma.conf.js",
+            "assets": [
+              "apps/shoe-store-web/src/favicon.ico",
+              "apps/shoe-store-web/src/assets"
+            ],
+            "styles": [
+              "apps/shoe-store-web/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/shoe-store-web/tsconfig.app.json",
+              "apps/shoe-store-web/tsconfig.spec.json",
+              "apps/shoe-store-web/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/shoe-store-web/e2e/protractor.conf.js",
+            "devServerTarget": "shoe-store-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shoe-store-web:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "shoe-store-admin": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/shoe-store-admin",
+      "sourceRoot": "apps/shoe-store-admin/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/shoe-store-admin",
+            "index": "apps/shoe-store-admin/src/index.html",
+            "main": "apps/shoe-store-admin/src/main.ts",
+            "polyfills": "apps/shoe-store-admin/src/polyfills.ts",
+            "tsConfig": "apps/shoe-store-admin/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/shoe-store-admin/src/favicon.ico",
+              "apps/shoe-store-admin/src/assets"
+            ],
+            "styles": [
+              "apps/shoe-store-admin/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/shoe-store-admin/src/environments/environment.ts",
+                  "with": "apps/shoe-store-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "shoe-store-admin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "shoe-store-admin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "shoe-store-admin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/shoe-store-admin/src/test.ts",
+            "polyfills": "apps/shoe-store-admin/src/polyfills.ts",
+            "tsConfig": "apps/shoe-store-admin/tsconfig.spec.json",
+            "karmaConfig": "apps/shoe-store-admin/karma.conf.js",
+            "assets": [
+              "apps/shoe-store-admin/src/favicon.ico",
+              "apps/shoe-store-admin/src/assets"
+            ],
+            "styles": [
+              "apps/shoe-store-admin/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/shoe-store-admin/tsconfig.app.json",
+              "apps/shoe-store-admin/tsconfig.spec.json",
+              "apps/shoe-store-admin/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/shoe-store-admin/e2e/protractor.conf.js",
+            "devServerTarget": "shoe-store-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shoe-store-admin:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "shoe-store-commons": {
+      "projectType": "library",
+      "root": "libs/shoe-store-commons",
+      "sourceRoot": "libs/shoe-store-commons/src",
+      "prefix": "ss-comm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "libs/shoe-store-commons/tsconfig.lib.json",
+            "project": "libs/shoe-store-commons/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shoe-store-commons/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shoe-store-commons/src/test.ts",
+            "tsConfig": "libs/shoe-store-commons/tsconfig.spec.json",
+            "karmaConfig": "libs/shoe-store-commons/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shoe-store-commons/tsconfig.lib.json",
+              "libs/shoe-store-commons/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "shoe-store-components": {
+      "projectType": "library",
+      "root": "libs/shoe-store-components",
+      "sourceRoot": "libs/shoe-store-components/src",
+      "prefix": "ss-comp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "libs/shoe-store-components/tsconfig.lib.json",
+            "project": "libs/shoe-store-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shoe-store-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shoe-store-components/src/test.ts",
+            "tsConfig": "libs/shoe-store-components/tsconfig.spec.json",
+            "karmaConfig": "libs/shoe-store-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shoe-store-components/tsconfig.lib.json",
+              "libs/shoe-store-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "shoe-store-web"
 }

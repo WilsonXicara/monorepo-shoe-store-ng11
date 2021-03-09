@@ -14,6 +14,16 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "shoe-store-commons": [
+        "dist/shoe-store-commons/shoe-store-commons",
+        "dist/shoe-store-commons"
+      ],
+      "shoe-store-components": [
+        "dist/shoe-store-components/shoe-store-components",
+        "dist/shoe-store-components"
+      ]
+    },
     "target": "es2015",
     "module": "es2020",
     "lib": [
